@@ -127,7 +127,7 @@ public class ExcelImporterMaker : EditorWindow
                 ISheet sheet = book.GetSheetAt(0);
 
                 window.className = EditorPrefs.GetString(s_key_prefix + window.fileName + ".className", "Entity_" + sheet.SheetName);
-                window.paramName = EditorPrefs.GetString(s_key_prefix + window.fileName + ".paramName", "Param" + sheet.SheetName);
+                window.paramName = EditorPrefs.GetString(s_key_prefix + window.fileName + ".paramName", "Param");
 
                 window.sepalateSheet = EditorPrefs.GetBool(s_key_prefix + window.fileName + ".separateSheet");
 
