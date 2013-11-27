@@ -7,16 +7,15 @@ public partial class $ExcelData$ : ScriptableObject
 	public List<Sheet> sheets = new List<Sheet> ();
 
 	[System.SerializableAttribute]
-	public class Sheet
+	public partial class Sheet
 	{
 		public string name = string.Empty;
 		public List<$ParamData$> list = new List<$ParamData$>();
 	}
 
 	[System.SerializableAttribute]
-	public class $ParamData$
+	public partial class $ParamData$
 	{
 		$Types$
 	}
 }
-

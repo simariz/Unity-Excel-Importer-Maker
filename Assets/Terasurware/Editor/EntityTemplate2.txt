@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public partial class $ExcelData$ : ScriptableObject
 {	
-	public List<$ParamData$> param = new List<$ParamData$> ();
+	public List<$ParamData$> list = new List<$ParamData$> ();
 
 	[System.SerializableAttribute]
-	public class $ParamData$
+	public partial class $ParamData$
 	{
 		$Types$
 	}

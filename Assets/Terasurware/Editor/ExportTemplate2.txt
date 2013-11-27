@@ -35,7 +35,7 @@ public class $ExportTemplate$ : AssetPostprocessor
                         AssetDatabase.CreateAsset((ScriptableObject)data, exportPath);
                         data.hideFlags = HideFlags.NotEditable;
                     }
-                    data.param.Clear();
+                    data.list.Clear();
 
 					// check sheet
                     var sheet = book.GetSheet(sheetName);
@@ -53,11 +53,11 @@ public class $ExportTemplate$ : AssetPostprocessor
                         
                         var p = new $ExcelData$.$ParamData$();
                         bool isEmpty = true;
-			$EXPORT_DATA$
+						$EXPORT_DATA$
 
                         if( !isEmpty )
                         {
-                            data.param.Add(p);
+                            data.list.Add(p);
                         }
                     }
                     

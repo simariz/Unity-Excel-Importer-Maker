@@ -44,8 +44,13 @@ public class $ExportTemplate$ : AssetPostprocessor {
 						ICell cell = null;
 						
 						$ExcelData$.$ParamData$ p = new $ExcelData$.$ParamData$ ();
+                        bool isEmpty = true;
 						$EXPORT_DATA$
-						s.list.Add (p);
+
+                        if( !isEmpty )
+                        {
+							s.list.Add (p);
+                        }
 					}
 					data.sheets.Add(s);
 				}
