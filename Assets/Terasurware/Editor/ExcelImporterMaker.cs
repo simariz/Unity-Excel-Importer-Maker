@@ -281,16 +281,16 @@ public class ExcelImporterMaker : EditorWindow
                     switch (row.type)
                     {
                         case ValueType.BOOL:
-                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (cell == null ? false : cell.BooleanCellValue);", row.name, rowCount);
+                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (cell == null ? false : cell.BooleanCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount);
                             break;
                         case ValueType.DOUBLE:
-                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (cell == null ? 0.0 : cell.NumericCellValue);", row.name, rowCount);
+                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (cell == null ? 0.0 : cell.NumericCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount);
                             break;
                         case ValueType.INT:
-                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (int)(cell == null ? 0 : cell.NumericCellValue);", row.name, rowCount);
+                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (int)(cell == null ? 0 : cell.NumericCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount);
                             break;
                         case ValueType.STRING:
-                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (cell == null ? \"\" : cell.StringCellValue);", row.name, rowCount);
+                            builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0} = (cell == null ? \"\" : cell.StringCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount);
                             break;
                     }
                 } else
@@ -326,16 +326,16 @@ public class ExcelImporterMaker : EditorWindow
                             switch (row.type)
                             {
                                 case ValueType.BOOL:
-                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (cell == null ? false : cell.BooleanCellValue);", row.name, rowCount + i, i);
+                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (cell == null ? false : cell.BooleanCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount + i, i);
                                     break;
                                 case ValueType.DOUBLE:
-                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (cell == null ? 0.0 : cell.NumericCellValue);", row.name, rowCount + i, i);
+                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (cell == null ? 0.0 : cell.NumericCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount + i, i);
                                     break;
                                 case ValueType.INT:
-                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (int)(cell == null ? 0 : cell.NumericCellValue);", row.name, rowCount + i, i);
+                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (int)(cell == null ? 0 : cell.NumericCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount + i, i);
                                     break;
                                 case ValueType.STRING:
-                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (cell == null ? \"\" : cell.StringCellValue);", row.name, rowCount + i, i);
+                                    builder.AppendFormat(tab + "cell = row.GetCell({1}); p.{0}[{2}] = (cell == null ? \"\" : cell.StringCellValue); if(cell.CellType != CellType.BLANK) isEmpty = false;", row.name, rowCount + i, i);
                                     break;
                             }
                         }

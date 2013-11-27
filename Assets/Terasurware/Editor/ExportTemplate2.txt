@@ -52,9 +52,13 @@ public class $ExportTemplate$ : AssetPostprocessor
                         ICell cell = null;
                         
                         var p = new $ExcelData$.Param();
+                        bool isEmpty = true;
 			$EXPORT_DATA$
 
-                        data.param.Add(p);
+                        if( !isEmpty )
+                        {
+                            data.param.Add(p);
+                        }
                     }
                     
                     // save scriptable object
