@@ -17,6 +17,7 @@ public class ExcelImporterMaker : EditorWindow
     {
         GUILayout.Label("makeing importer", EditorStyles.boldLabel);
         className = EditorGUILayout.TextField("class name", className);
+        paramName = EditorGUILayout.TextField("param name", paramName);
         sepalateSheet = EditorGUILayout.Toggle("sepalate sheet", sepalateSheet);
 
         EditorPrefs.SetBool(s_key_prefix + fileName + ".separateSheet", sepalateSheet);
@@ -24,6 +25,7 @@ public class ExcelImporterMaker : EditorWindow
         if (GUILayout.Button("create"))
         {
             EditorPrefs.SetString(s_key_prefix + fileName + ".className", className);
+            EditorPrefs.SetString(s_key_prefix + fileName + ".paramName", paramName);
             ExportEntity();
             ExportImporter();
 			
@@ -92,6 +94,7 @@ public class ExcelImporterMaker : EditorWindow
     private List<ExcelRowParameter> typeList = new List<ExcelRowParameter>();
     private List<ExcelSheetParameter> sheetList = new List<ExcelSheetParameter>();
     private string className = string.Empty;
+    private string paramName = string.Empty;
     private string fileName = string.Empty;
     private static string s_key_prefix = "terasurware.exel-importer-maker.";
 	
@@ -124,6 +127,7 @@ public class ExcelImporterMaker : EditorWindow
                 ISheet sheet = book.GetSheetAt(0);
 
                 window.className = EditorPrefs.GetString(s_key_prefix + window.fileName + ".className", "Entity_" + sheet.SheetName);
+                window.paramName = EditorPrefs.GetString(s_key_prefix + window.fileName + ".paramName", "Param" + sheet.SheetName);
 
                 window.sepalateSheet = EditorPrefs.GetBool(s_key_prefix + window.fileName + ".separateSheet");
 
@@ -238,6 +242,7 @@ public class ExcelImporterMaker : EditorWindow
 		
         entittyTemplate = entittyTemplate.Replace("$Types$", builder.ToString());
         entittyTemplate = entittyTemplate.Replace("$ExcelData$", className);
+        entittyTemplate = entittyTemplate.Replace("$ParamData$", paramName);
 		
         Directory.CreateDirectory("Assets/Terasurware/Classes/");
         File.WriteAllText("Assets/Terasurware/Classes/" + className + ".cs", entittyTemplate);
@@ -350,6 +355,7 @@ public class ExcelImporterMaker : EditorWindow
         importerTemplate = importerTemplate.Replace("$ExportAssetDirectry$", Path.GetDirectoryName(filePath));
         importerTemplate = importerTemplate.Replace("$EXPORT_PATH$", Path.ChangeExtension(filePath, ".asset"));
         importerTemplate = importerTemplate.Replace("$ExcelData$", className);
+        importerTemplate = importerTemplate.Replace("$ParamData$", paramName);
         importerTemplate = importerTemplate.Replace("$SheetList$", sheetListbuilder.ToString());
         importerTemplate = importerTemplate.Replace("$EXPORT_DATA$", builder.ToString());
         importerTemplate = importerTemplate.Replace("$ExportTemplate$", fileName + "_importer");

@@ -43,7 +43,7 @@ public class $ExportTemplate$ : AssetPostprocessor {
 						IRow row = sheet.GetRow (i);
 						ICell cell = null;
 						
-						$ExcelData$.Param p = new $ExcelData$.Param ();
+						$ExcelData$.$ParamData$ p = new $ExcelData$.$ParamData$ ();
 						$EXPORT_DATA$
 						s.list.Add (p);
 					}

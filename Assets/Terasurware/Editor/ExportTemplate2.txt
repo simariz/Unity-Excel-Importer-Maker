@@ -51,7 +51,7 @@ public class $ExportTemplate$ : AssetPostprocessor
                         IRow row = sheet.GetRow(i);
                         ICell cell = null;
                         
-                        var p = new $ExcelData$.Param();
+                        var p = new $ExcelData$.$ParamData$();
                         bool isEmpty = true;
 			$EXPORT_DATA$
 

@@ -10,11 +10,11 @@ public class $ExcelData$ : ScriptableObject
 	public class Sheet
 	{
 		public string name = string.Empty;
-		public List<Param> list = new List<Param>();
+		public List<$ParamData$> list = new List<$ParamData$>();
 	}
 
 	[System.SerializableAttribute]
-	public class Param
+	public class $ParamData$
 	{
 		$Types$
 	}
